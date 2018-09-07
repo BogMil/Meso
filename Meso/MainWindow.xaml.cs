@@ -24,5 +24,44 @@ namespace Meso
         {
             InitializeComponent();
         }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            this.ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            this.ButtonOpenMenu.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            this.ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            this.ButtonCloseMenu.Visibility = Visibility.Visible;
+        }
+
+        private void exit_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void EnterFullScreen_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Maximized;
+            this.ExitFullScreen.Visibility = Visibility.Visible;
+            this.EnterFullScreen.Visibility = Visibility.Collapsed;
+            EnterFulScreenListView.SelectedItem = null;
+        }
+
+        private void ExitFullScreen_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Normal;
+            this.EnterFullScreen.Visibility = Visibility.Visible;
+            this.ExitFullScreen.Visibility = Visibility.Collapsed;
+            EnterFulScreenListView.SelectedItem = null;
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            this.DragMove();
+        }
     }
 }

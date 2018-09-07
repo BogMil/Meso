@@ -4,9 +4,134 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meso"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:VM="clr-namespace:Meso.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Meso" Height="800" Width="800" 
+        WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        Foreground="white" ResizeMode="NoResize"
         
+        >
+
+    <Window.DataContext>
+        <VM:Class1 />
+    </Window.DataContext>
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid Background="Gray">
+        <Grid Height="60" VerticalAlignment="top" Background="#FF3379BF" MouseDown="Grid_MouseDown" Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="Meso" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <ListView  Foreground="white" >
+                    <ListViewItem x:Name="ExitFullScreen" Height="60" PreviewMouseLeftButtonUp="ExitFullScreen_PreviewMouseLeftButtonUp" Visibility="Collapsed">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="FullscreenExit" Width="30" Height="30" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+                <ListView x:Name="EnterFulScreenListView" Foreground="white">
+                    <ListViewItem x:Name="EnterFullScreen" Height="60" PreviewMouseLeftButtonUp="EnterFullScreen_PreviewMouseLeftButtonUp" Margin="0 0 0 0" Width="50">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="Fullscreen" Width="30" Height="30" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+                <ListView Foreground="white">
+                    <ListViewItem Height="60" PreviewMouseLeftButtonUp="exit_PreviewMouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="Close" Width="30" Height="30" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        
+        <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#FF003F6A">
+            <StackPanel>
+                <Grid Height="60" Background="white">
+                    <Button x:Name="ButtonCloseMenu" Height="50" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="top" HorizontalAlignment="Right" Visibility="Collapsed" Foreground="#FF0C578B" Click="ButtonCloseMenu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Button>
+                    <Button x:Name="ButtonOpenMenu" Height="50" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="top" HorizontalAlignment="Right" Foreground="#FF0C578B" Click="ButtonOpenMenu_Click" >
+                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Button>
+                </Grid>
+                <ListView Foreground="#FF3379BF" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="ViewDashboard" Width="30" Height="30" VerticalAlignment="Center" />
+                            <TextBlock Text="Pocetna" VerticalAlignment="Center" Margin="20 10" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="Account" Width="30" Height="30" VerticalAlignment="Center" />
+                            <TextBlock Text="Musterije" VerticalAlignment="Center" Margin="20 10" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="Fire" Width="30" Height="30" VerticalAlignment="Center" />
+                            <TextBlock Text="Susenje" VerticalAlignment="Center" Margin="20 10" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="Store" Width="30" Height="30" VerticalAlignment="Center" />
+                            <TextBlock Text="Prodaja" VerticalAlignment="Center" Margin="20 10" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" >
+                            <!--<materialDesign:PackIcon Kind="" Width="25" Height="25" VerticalAlignment="Center"/>-->
+                            <Image Width="30" Height="30" >
+                                <Image.Source>
+                                    <BitmapImage DecodePixelWidth="300" UriSource="/Resources/ham-leg.png"/>
+                                </Image.Source>
+                            </Image>
+                            <TextBlock Text="Prsuti" VerticalAlignment="Center" Margin="20 10" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="Coin" Width="30" Height="30" VerticalAlignment="Center" />
+                            <TextBlock Text="Prodaja" VerticalAlignment="Center" Margin="20 10" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <Grid Background="Wheat" Margin="50 60 0 0" Panel.ZIndex="-1" x:Name="MainPage" HorizontalAlignment="Stretch" >
+            <StackPanel>
+                <TextBox Text="{Binding text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="{Binding text}"  Foreground="black" Background="AliceBlue" />
+            </StackPanel>
+            <ContentControl Content="{Binding CurrentView}"/>
+        </Grid>
     </Grid>
 </Window>
