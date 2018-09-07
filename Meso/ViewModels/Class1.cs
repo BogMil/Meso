@@ -5,11 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data.Entity;
+
 namespace Meso.ViewModels
 {
     class Class1 : BaseViewModel
     {
-        private string _text = nameof(testNameof);
+        public Class1()
+        {
+            MesoEntities x = new MesoEntities();
+            _text = x.Test.FirstOrDefault().test1;
+        }
+
+        private string _text;
         public string text {
             get
             {
@@ -25,10 +33,5 @@ namespace Meso.ViewModels
 
         public string testNameof { get; set; }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //private void OnPropertyRaised(string propertyname)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
-        //}
     }
 }
