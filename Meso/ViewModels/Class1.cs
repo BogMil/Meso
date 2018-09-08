@@ -13,8 +13,7 @@ namespace Meso.ViewModels
     {
         public Class1()
         {
-            MesoEntities x = new MesoEntities();
-            _text = x.Test.FirstOrDefault().test1;
+           
         }
 
         private string _text;

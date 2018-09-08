@@ -9,8 +9,8 @@
         mc:Ignorable="d"
         Title="Meso" Height="800" Width="800" 
         WindowStartupLocation="CenterScreen" WindowStyle="None" 
-        Foreground="white" ResizeMode="NoResize"
-        
+        Foreground="white"
+        MinWidth="500"
         >
 
     <Window.DataContext>
@@ -22,6 +22,12 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
+
+            <local:GridLengthAnimation
+              Storyboard.TargetName="MenuGridColumn"
+              Storyboard.TargetProperty="Width"
+              From="50" To="200" Duration="0:0:0.5" />
+
         </Storyboard>
         <Storyboard x:Key="MenuClose">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -43,7 +49,15 @@
     </Window.Triggers>
 
     <Grid Background="Gray">
-        <Grid Height="60" VerticalAlignment="top" Background="#FF3379BF" MouseDown="Grid_MouseDown" Grid.Row="0" Grid.Column="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" Name="MenuGridColumn" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Height="60" VerticalAlignment="top" Background="#FF3379BF" MouseDown="Grid_MouseDown" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock Text="Meso" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
 
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -70,8 +84,8 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        
-        <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#FF003F6A">
+
+        <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#FF003F6A" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
             <StackPanel>
                 <Grid Height="60" Background="white">
                     <Button x:Name="ButtonCloseMenu" Height="50" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="top" HorizontalAlignment="Right" Visibility="Collapsed" Foreground="#FF0C578B" Click="ButtonCloseMenu_Click">
@@ -126,12 +140,18 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <Grid Background="Wheat" Margin="50 60 0 0" Panel.ZIndex="-1" x:Name="MainPage" HorizontalAlignment="Stretch" >
-            <StackPanel>
-                <TextBox Text="{Binding text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBlock Text="{Binding text}"  Foreground="black" Background="AliceBlue" />
-            </StackPanel>
-            <ContentControl Content="{Binding CurrentView}"/>
-        </Grid>
+        <!--<Grid Background="Wheat"  x:Name="MainPage"  Grid.Column="2" Grid.Row="2" >-->
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="MainPage"  Grid.Column="2" Grid.Row="2" Background="Wheat">
+                <Grid>
+                    <StackPanel>
+                        <TextBox Text="{Binding text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="500" Background="white"/>
+                        <TextBox Text="{Binding text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="500" HorizontalAlignment="Left" Background="white"/>
+                        <TextBox Text="{Binding text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="500" HorizontalAlignment="Right" Background="white"/>
+                        <TextBlock Text="{Binding text}"  Foreground="black" Background="AliceBlue"  HorizontalAlignment="Right"/>
+                    </StackPanel>
+                    <ContentControl Content="{Binding CurrentView}"/>
+                </Grid>
+            </ScrollViewer>
+        <!--</Grid>-->
     </Grid>
 </Window>
