@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meso", "Meso\Meso.csproj", "{1FAD33BE-7446-43B0-9E9B-72F099BCFAC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericCSR", "GenericCSR\GenericCSR.csproj", "{3E558B58-D5AB-4590-9A09-D9CD5D15C825}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1FAD33BE-7446-43B0-9E9B-72F099BCFAC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FAD33BE-7446-43B0-9E9B-72F099BCFAC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FAD33BE-7446-43B0-9E9B-72F099BCFAC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E558B58-D5AB-4590-9A09-D9CD5D15C825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E558B58-D5AB-4590-9A09-D9CD5D15C825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E558B58-D5AB-4590-9A09-D9CD5D15C825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E558B58-D5AB-4590-9A09-D9CD5D15C825}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

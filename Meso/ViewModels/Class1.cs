@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Data.Entity;
+using System.Windows.Controls;
+using Meso.Views;
 
 namespace Meso.ViewModels
 {
@@ -32,5 +34,6 @@ namespace Meso.ViewModels
 
         public string testNameof { get; set; }
 
+        public Page CurrentView { get; set; } = new Page1();
     }
 }
