@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Data.Entity;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using Meso.Views;
+using Meso.Commands;
+using System.Windows.Input;
 
 namespace Meso.ViewModels
 {
@@ -15,7 +9,7 @@ namespace Meso.ViewModels
     {
         public Class1()
         {
-           
+            ChangePage = new RelayCommand(x => this.CurrentView = new Page1(), x => true);
         }
 
         private string _text;
@@ -34,6 +28,8 @@ namespace Meso.ViewModels
 
         public string testNameof { get; set; }
 
-        public Page CurrentView { get; set; } = new Page1();
+        public Page CurrentView { get; set; } = new Page2();
+
+        public ICommand ChangePage { get; set; }
     }
 }

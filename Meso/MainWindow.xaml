@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Meso"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:VM="clr-namespace:Meso.ViewModels"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Meso" Height="600" Width="800" 
         WindowStartupLocation="CenterScreen" WindowStyle="None" 
@@ -18,6 +19,7 @@
         <VM:Class1 />
     </Window.DataContext>
     <Window.Resources>
+        <VM:Class1 x:Key="vm"/>
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
@@ -97,7 +99,15 @@
                     </Button>
                 </Grid>
                 <ListView Foreground="#FF3379BF" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
-                    <ListViewItem Height="60">
+                    
+                    <ListViewItem Height="60" >
+                        
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding ChangePage}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        
                         <StackPanel Orientation="Horizontal" >
                             <materialDesign:PackIcon Kind="ViewDashboard" Width="30" Height="30" VerticalAlignment="Center" />
                             <TextBlock Text="Pocetna" VerticalAlignment="Center" Margin="20 10" FontSize="20"/>
