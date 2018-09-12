@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meso.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,6 +14,10 @@ namespace Meso
     /// </summary>
     public partial class App : Application
     {
-        
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            UnityConfig.RegisterComponents();
+        }
     }
 }

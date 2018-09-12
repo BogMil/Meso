@@ -16,7 +16,7 @@
         >
 
     <Window.DataContext>
-        <VM:Class1 />
+        <VM:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
         <VM:Class1 x:Key="vm"/>
@@ -115,7 +115,7 @@
                     <ListViewItem Height="60">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding ChangePage}" CommandParameter="Page2"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction Command="{Binding SetMusterijePage}" CommandParameter="Musterije"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <StackPanel Orientation="Horizontal" >
@@ -155,12 +155,12 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <!--<Grid Background="Wheat"  x:Name="MainPage"  Grid.Column="2" Grid.Row="2" >-->
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="MainPage"  Grid.Column="2" Grid.Row="2" Background="Wheat">
+        <Grid Background="Wheat"  x:Name="MainPage"  Grid.Column="2" Grid.Row="2" >
+        <!--<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="MainPage"  Grid.Column="2" Grid.Row="2" Background="Wheat">-->
             <!--<Grid>-->
                 <Frame Content="{Binding CurrentView}" x:Name="frame" NavigationUIVisibility="Hidden"/>
             <!--</Grid>-->
-            </ScrollViewer>
-        <!--</Grid>-->
+            <!--</ScrollViewer>-->
+        </Grid>
     </Grid>
 </Window>
