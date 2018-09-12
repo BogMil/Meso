@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meso.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Meso.Views
         public Page2()
         {
             InitializeComponent();
+            DataContext = new Page2DC();
         }
     }
 }

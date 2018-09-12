@@ -2,6 +2,7 @@
 using Meso.Views;
 using Meso.Commands;
 using System.Windows.Input;
+using System.Windows;
 
 namespace Meso.ViewModels
 {
@@ -9,7 +10,7 @@ namespace Meso.ViewModels
     {
         public Class1()
         {
-            ChangePage = new RelayCommand(x => this.CurrentView = new Page1(), x => true);
+            ChangePage = new RelayCommand(setPage);
         }
 
         private string _text;
@@ -28,8 +29,26 @@ namespace Meso.ViewModels
 
         public string testNameof { get; set; }
 
-        public Page CurrentView { get; set; } = new Page2();
+        private Page _CurrentView { get; set; } = new Page2();
+        public Page CurrentView
+        {
+            get
+            {
+                return _CurrentView;
+            }
+            set
+            {
+                _CurrentView = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand ChangePage { get; set; }
+
+        private void setPage(object page)
+        {
+            System.Uri resource = new System.Uri(@"Views\"+ page + ".xaml", System.UriKind.RelativeOrAbsolute);
+            CurrentView = Application.LoadComponent(resource) as Page;
+        }
     }
 }
