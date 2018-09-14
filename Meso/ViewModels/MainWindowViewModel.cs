@@ -1,10 +1,6 @@
-﻿using Meso.Commands;
+﻿using System;
+using Meso.Commands;
 using Meso.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,35 +14,33 @@ namespace Meso.ViewModels
 
         public MainWindowViewModel()
         {
-            ChangePage = new RelayCommand(setPage);
-            SetMusterijePage = new RelayCommand(setMstrPage);
+            ChangePage = new RelayCommand(SetPage);
+            SetMusterijePage = new RelayCommand(SetMstrPage);
         }
 
-        private Page _CurrentView { get; set; } = new Page2();
+        private Page _currentView = new Page2();
         public Page CurrentView
         {
-            get
-            {
-                return _CurrentView;
-            }
+            get => _currentView;
             set
             {
-                _CurrentView = value;
+                _currentView = value;
                 OnPropertyChanged();
             }
         }
 
-        private void setPage(object page)
+        private void SetPage(object page)
         {
-            System.Uri resource = new System.Uri(@"Views\" + page + ".xaml", System.UriKind.RelativeOrAbsolute);
+            var resource = new Uri(@"Views\" + page + ".xaml", UriKind.RelativeOrAbsolute);
             CurrentView = Application.LoadComponent(resource) as Page;
         }
 
-        private async void  setMstrPage(object page)
+        private void  SetMstrPage(object page)
         {
-            System.Uri resource = new System.Uri(@"Views\" + page + ".xaml", System.UriKind.RelativeOrAbsolute);
+            var resource = new Uri(@"Views\" + page + ".xaml", UriKind.RelativeOrAbsolute);
             CurrentView = Application.LoadComponent(resource) as Page;
-            CurrentView.DataContext = await MusterijeViewModel.CreateInstance();
+            if (CurrentView == null) throw new Exception("Nije definisan view");
+            //CurrentView.DataContext = await MusterijeViewModel.CreateInstance();
         }
     }
 }

@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Meso.CustomControls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -50,7 +49,7 @@
     </UserControl.Resources>
     <StackPanel>
         <TextBlock Width="100" Background="#FFA6CEE0" VerticalAlignment="Center" 
-                       TextAlignment="Center" HorizontalAlignment="Center" Text="{Binding Text}"
+                       TextAlignment="Center" HorizontalAlignment="Center" Text="{Binding CurrentRecordsText}"
                        Margin="5"/>
         <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Margin="0 0 1 0">
@@ -65,7 +64,7 @@
                 <ComboBoxItem>b</ComboBoxItem>
                 <ComboBoxItem>c</ComboBoxItem>
             </ComboBox>
-            <Button Margin="0 0 1 0" Command="{Binding testCommand}">
+            <Button Margin="0 0 1 0" Command="{Binding GetNextRecordSetCommand}">
                 <materialDesign:PackIcon Kind="ChevronRight" Width="30" Height="30" VerticalAlignment="Center" />
             </Button>
             <Button Background="#FF673AB7" IsEnabled="False">

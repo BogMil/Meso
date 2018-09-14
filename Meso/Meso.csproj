@@ -143,6 +143,7 @@
     <Compile Include="Models\Musterije.cs">
       <DependentUpon>MesoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PaginationDataContext.cs" />
     <Compile Include="Models\Test.cs">
       <DependentUpon>MesoModel.tt</DependentUpon>
     </Compile>
