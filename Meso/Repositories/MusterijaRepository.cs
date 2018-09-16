@@ -5,16 +5,16 @@ using Meso.Repositories.Interfaces;
 namespace Meso.Repositories
 {
     public class MusterijaRepository :
-        GenericRepository<Musterije, MesoEntities, MusterijaOrderByPredicateCreator, MusterijaWherePredicateCreator>,
+        GenericRepository<tbl_musterija, MesoEntities, MusterijaOrderByPredicateCreator, MusterijaWherePredicateCreator>,
         IMusterijaRepository
     {
         public MusterijaRepository(MesoEntities context) : base(context)
         {
         }
 
-        protected override object GetPrimaryKey(Musterije entity)
+        protected override object GetPrimaryKey(tbl_musterija entity)
         {
-            return entity.Id_musterije;
+            return entity.IdMusterije;
         }
     }
 }

@@ -3,7 +3,7 @@ using Meso.Models;
 
 namespace Meso.Repositories.Interfaces
 {
-    public interface IMusterijaRepository : IGenericRepository<Musterije>
+    public interface IMusterijaRepository : IGenericRepository<tbl_musterija>
     {
     }
 }

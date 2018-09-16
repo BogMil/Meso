@@ -13,7 +13,7 @@ namespace Meso.Models
 {
     public class Musterija
     {
-        public int Id_musterije { get; set; }
+        public int IdMusterije { get; set; }
         public string Prezime { get; set; }
         public string Ime { get; set; }
         public string Telefon { get; set; }
@@ -29,25 +29,25 @@ namespace Meso.Models
 
     }
 
-    public class MusterijaOrderByPredicateCreator : GenericOrderByPredicateCreator<Musterije, MusterijaPropertyMapper>
+    public class MusterijaOrderByPredicateCreator : GenericOrderByPredicateCreator<tbl_musterija, MusterijaPropertyMapper>
     {
-        protected override System.Linq.Expressions.Expression<Func<Musterije, dynamic>> GetDefaultOrderByColumn()
+        protected override System.Linq.Expressions.Expression<Func<tbl_musterija, dynamic>> GetDefaultOrderByColumn()
         {
-            return x => x.Id_musterije;
+            return x => x.IdMusterije;
         }
     }
 
-    public class MusterijaWherePredicateCreator : GenericWherePredicateCreator<Musterije, MusterijaPropertyMapper>
+    public class MusterijaWherePredicateCreator : GenericWherePredicateCreator<tbl_musterija, MusterijaPropertyMapper>
     {
 
     }
 
-    public class MusterijaPropertyMapper : GenericPropertyMapper<Musterije, MusterijaQueryDto>
+    public class MusterijaPropertyMapper : GenericPropertyMapper<tbl_musterija, MusterijaQueryDto>
     {
-        public override System.Linq.Expressions.Expression<Func<Musterije, dynamic>> GetPathInEfForDtoFieldExpression(string dtoFieldName)
+        public override System.Linq.Expressions.Expression<Func<tbl_musterija, dynamic>> GetPathInEfForDtoFieldExpression(string dtoFieldName)
         {
-            if (dtoFieldName == GetDtoPropertyPathAsString(t => t.Id_musterije))
-                return x => x.Id_musterije;
+            if (dtoFieldName == GetDtoPropertyPathAsString(t => t.IdMusterije))
+                return x => x.IdMusterije;
             if (dtoFieldName == GetDtoPropertyPathAsString(t => t.Ime))
                 return x => x.Ime;
             if (dtoFieldName == GetDtoPropertyPathAsString(t => t.Prezime))
@@ -63,10 +63,10 @@ namespace Meso.Models
     {
         public MusterijaMappingProfile()
         {
-            CreateMap<Musterije, MusterijaQueryDto>();
-            CreateMap<MusterijaCommandDto, Musterije>();
-            CreateMap<PagedList<Musterije>, StaticPagedList<MusterijaQueryDto>>()
-                .ConvertUsing<PagedListConverter<Musterije, MusterijaQueryDto>>();
+            CreateMap<tbl_musterija, MusterijaQueryDto>();
+            CreateMap<MusterijaCommandDto, tbl_musterija>();
+            CreateMap<PagedList<tbl_musterija>, StaticPagedList<MusterijaQueryDto>>()
+                .ConvertUsing<PagedListConverter<tbl_musterija, MusterijaQueryDto>>();
         }
     }
 }

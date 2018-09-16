@@ -4,73 +4,49 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Musterije">
+      <Schema Namespace="MesoModel.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_musterija">
           <Key>
-            <PropertyRef Name="Id_musterije" />
+            <PropertyRef Name="IdMusterije" />
           </Key>
-          <Property Name="Id_musterije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMusterije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Ime" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="Test">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="test" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="Musterije" EntityType="Self.Musterije" store:Type="Tables" />
-          <EntitySet Name="Test" EntityType="Self.Test" store:Type="Tables" />
+        <EntityContainer Name="MesoModelStoreContainer">
+          <EntitySet Name="tbl_musterija" EntityType="Self.tbl_musterija" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Musterije">
+      <Schema Namespace="MesoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_musterija">
           <Key>
-            <PropertyRef Name="Id_musterije" />
+            <PropertyRef Name="IdMusterije" />
           </Key>
-          <Property Name="Id_musterije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMusterije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Test">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="test1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="MesoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Musterije" EntityType="Self.Musterije" />
-          <EntitySet Name="Test" EntityType="Self.Test" />
+          <EntitySet Name="tbl_musterija" EntityType="Self.tbl_musterija" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="MesoEntities">
-          <EntitySetMapping Name="Musterije">
-            <EntityTypeMapping TypeName="Model.Musterije">
-              <MappingFragment StoreEntitySet="Musterije">
-                <ScalarProperty Name="Id_musterije" ColumnName="Id_musterije" />
+        <EntityContainerMapping StorageEntityContainer="MesoModelStoreContainer" CdmEntityContainer="MesoEntities">
+          <EntitySetMapping Name="tbl_musterija">
+            <EntityTypeMapping TypeName="MesoModel.tbl_musterija">
+              <MappingFragment StoreEntitySet="tbl_musterija">
+                <ScalarProperty Name="IdMusterije" ColumnName="IdMusterije" />
                 <ScalarProperty Name="Prezime" ColumnName="Prezime" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
                 <ScalarProperty Name="Telefon" ColumnName="Telefon" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Test">
-            <EntityTypeMapping TypeName="Model.Test">
-              <MappingFragment StoreEntitySet="Test">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="test1" ColumnName="test" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

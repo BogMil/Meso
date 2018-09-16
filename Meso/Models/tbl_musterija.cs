@@ -12,9 +12,9 @@ namespace Meso.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Musterije
+    public partial class tbl_musterija
     {
-        public int Id_musterije { get; set; }
+        public int IdMusterije { get; set; }
         public string Prezime { get; set; }
         public string Ime { get; set; }
         public string Telefon { get; set; }

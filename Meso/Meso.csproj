@@ -56,9 +56,13 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.1.1101, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicrosoftExpressionInteractions.3.0.40218.0\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -140,11 +144,8 @@
       <DependentUpon>MesoModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Musterija.cs" />
-    <Compile Include="Models\Musterije.cs">
-      <DependentUpon>MesoModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\PaginationDataContext.cs" />
-    <Compile Include="Models\Test.cs">
+    <Compile Include="Models\tbl_musterija.cs">
       <DependentUpon>MesoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PagedListConverter.cs" />

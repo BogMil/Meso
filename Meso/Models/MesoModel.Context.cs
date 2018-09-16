@@ -25,7 +25,6 @@ namespace Meso.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Musterije> Musterije { get; set; }
-        public virtual DbSet<Test> Test { get; set; }
+        public virtual DbSet<tbl_musterija> tbl_musterija { get; set; }
     }
 }
