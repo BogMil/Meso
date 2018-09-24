@@ -37,7 +37,7 @@ namespace Meso.ViewModels
 
         private void  SetMstrPage(object page)
         {
-            var resource = new Uri(@"Views\" + page + ".xaml", UriKind.RelativeOrAbsolute);
+            var resource = new Uri(@"Views\Musterija\" + page + ".xaml", UriKind.RelativeOrAbsolute);
             CurrentView = Application.LoadComponent(resource) as Page;
             if (CurrentView == null) throw new Exception("Nije definisan view");
             //CurrentView.DataContext = await MusterijeViewModel.CreateInstance();

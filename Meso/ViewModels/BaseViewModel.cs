@@ -7,7 +7,6 @@ namespace Meso.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public PaginationDataContext PaginationContext { get; set; }
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

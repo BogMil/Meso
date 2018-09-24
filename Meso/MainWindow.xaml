@@ -60,7 +60,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Height="60" VerticalAlignment="top" Background="#FF3379BF" MouseDown="Grid_MouseDown" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+        <Grid Height="60" VerticalAlignment="top" Background="#FF003F6A" MouseDown="Grid_MouseDown" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock Text="Meso" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
 
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -155,7 +155,7 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <Grid Background="Wheat"  x:Name="MainPage"  Grid.Column="2" Grid.Row="2" >
+        <Grid Background="#e5efff"  x:Name="MainPage"  Grid.Column="2" Grid.Row="2" >
         <!--<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="MainPage"  Grid.Column="2" Grid.Row="2" Background="Wheat">-->
             <!--<Grid>-->
                 <Frame Content="{Binding CurrentView}" x:Name="frame" NavigationUIVisibility="Hidden"/>
